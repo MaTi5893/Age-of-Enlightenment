@@ -1,2655 +1,1121 @@
-### Events 95260-95320 used
+political_decisions = {
 
-#########################################################
-#														#
-#      Events for the Second American Civil War			#
-#														#
-#########################################################
-
-country_event = {
-
-	id = 95260
-	title = "EVTNAME95260" #The Disunited States
-	desc = "EVTDESC95260"
-	news = yes
-	news_desc_long = "EVTDESC95260_NEWS_LONG"
-	news_desc_medium = "EVTDESC95260_NEWS_MEDIUM"
-	news_desc_short = "EVTDESC95260_NEWS_SHORT"
-	picture = "Demonstration"
-
-	major = yes
-	trigger = {
-		tag = USA
-		war = no
-		NOT = { government = democracy }
-		NOT = { has_global_flag = disunited_states }
-		NOT = { has_country_modifier = begin_disunited_states }
-		has_global_flag = american_civil_war_has_happened
-	}
-
-	mean_time_to_happen = {
-		months = 24
-		modifier = {
-			factor = 0.8
-			vote_franschise = none_voting
-		}
-		modifier = {
-			factor = 1.2
-			NOT = { vote_franschise = none_voting }
-		}
-		modifier = {
-			factor = 1.5
-			national_provinces_occupied = .01
-		}
-		modifier = {
-			factor = 0.5
-			num_of_revolts = 1
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_global_flag = disunited_states
-		set_global_flag = second_american_civil_war
-		add_country_modifier = {
-			name = begin_disunited_states
-			duration = 3650
-		}
-		any_pop = {
-			limit = {
-				location = { is_core = USA }
-				OR = {
-					is_primary_culture = yes
-					is_accepted_culture = yes
-				}
-				OR = {
-					pop_majority_ideology = liberal
-					liberal = 30
-					anarcho_liberal = 20
-				}
+	join_new_csa = {
+		picture = reform_csa
+		potential = {
+			OR = {
+				tag = TEX
+				tag = UNM
 			}
-			ideology = { factor = 0.3 value = liberal }
-			consciousness = 5
+			ai = yes
+			is_vassal = no
+			NOT = { has_country_flag = asked_to_join_csa }
+			neighbour = CSA
+				
 		}
-		random_state = {
-			limit = {
-				any_owned_province = { is_core = USA }
-				NOT = { any_owned_province = { is_capital = yes } }
-				liberal = 30
+
+		allow = {
+			war = no
+			is_greater_power = no
+			is_secondary_power = no
+			government = democracy
+			OR = {
+				part_of_sphere = no
+				sphere_owner = { is_sphere_leader_of = CSA }
+				in_sphere = CSA
 			}
-			any_owned = {
-				add_province_modifier = {
-					name = sons_of_liberty
-					duration = 365
-				}
+			CSA = {
+				war = no
+				government = democracy
+				NOT = { truce_with = THIS }
+			}
+			OR = {
+				in_sphere = CSA
+				relation = { who = CSA value = 50 }
 			}
 		}
+
+		effect = {
+			set_country_flag = asked_to_join_csa
+			all_core = { add_core = CSA }
+			CSA = { country_event = 60130 }
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
 	}
-}
+	
+	join_fsa = {
+		picture = form_fsa
+		potential = {
+			OR = {
+				tag = NEN
+				tag = UIL
+				tag = UNB
+				tag = DAK
+			}
+			ai = yes
+			is_vassal = no
+			NOT = { has_country_flag = asked_to_join_fsa }
+			neighbour = FSA
+				
+		}
 
-province_event = {
+		allow = {
+			war = no
+			is_greater_power = no
+			is_secondary_power = no
+			government = democracy
+			OR = {
+				part_of_sphere = no
+				sphere_owner = { is_sphere_leader_of = FSA }
+				in_sphere = FSA
+			}
+			FSA = {
+				war = no
+				government = democracy
+				NOT = { truce_with = THIS }
+			}
+			OR = {
+				in_sphere = FSA
+				relation = { who = FSA value = 100 }
+			}
+		}
 
-	id = 95261
-	title = "EVTNAME95261" #Sons of Liberty
-	desc = "EVTDESC95261"
+		effect = {
+			set_country_flag = asked_to_join_fsa
+			all_core = { add_core = FSA }
+			FSA = { country_event = 60130 }
+		}
 
-	trigger = {
-		owner = {
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	join_california = {
+		potential = {
+			OR = {
+				tag = DES
+				tag = UNM
+				tag = UOR
+				tag = DAK
+			}
+			ai = yes
+			is_vassal = no
+			NOT = { has_country_flag = asked_to_join_california }
+			neighbour = CAL
+			exists = yes
+				
+		}
+
+		allow = {
+			war = no
+			is_greater_power = no
+			is_secondary_power = no
+			government = democracy
+			OR = {
+				part_of_sphere = no
+				sphere_owner = { is_sphere_leader_of = CAL }
+				in_sphere = CAL
+			}
+			CAL = {
+				war = no
+				government = democracy
+				NOT = { truce_with = THIS }
+			}
+			OR = {
+				in_sphere = CAL
+				relation = { who = CAL value = 100 }
+			}
+		}
+
+		effect = {
+			set_country_flag = asked_to_join_california
+			all_core = { add_core = CAL }
+			CAL = { country_event = 60130 }
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	join_new_america = {
+		potential = {
+			OR = {
+				tag = UNB
+				tag = DAK
+			}
+			ai = yes
+			is_vassal = no
+			NOT = { has_country_flag = asked_to_join_new_america }
+			neighbour = UIL
+				
+		}
+
+		allow = {
+			war = no
+			is_greater_power = no
+			is_secondary_power = no
+			government = democracy
+			OR = {
+				part_of_sphere = no
+				sphere_owner = { is_sphere_leader_of = UIL }
+				in_sphere = UIL
+			}
+			UIL = {
+				war = no
+				government = democracy
+				NOT = { truce_with = THIS }
+			}
+			OR = {
+				in_sphere = UIL
+				relation = { who = UIL value = 100 }
+			}
+		}
+
+		effect = {
+			set_country_flag = asked_to_join_new_america
+			all_core = { add_core = UIL }
+			UIL = { country_event = 60130 }
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	rejoin_usa = {
+		potential = {
+			OR = {
+				AND = {
+					tag = CAL
+					has_country_flag = usstatehood_we_have_applied
+				}
+				AND = {
+					tag = TEX
+					has_country_flag = usstatehood_we_have_applied
+				}
+				AND = {
+					tag = DES
+					has_country_flag = usstatehood_we_have_applied
+				}
+				AND = {
+					tag = NEN
+					OR = {
+						has_country_flag = usstatehood_we_have_applied
+						USA = { ai = yes }
+					}
+				}
+				tag = UIL
+				tag = UNB
+				tag = UNM
+				tag = UOR
+				tag = DAK
+			}
+			NOT = { has_global_flag = disunited_states }
+			NOT = { has_country_flag = asked_to_rejoin_usa }
+			NOT = {
+				tag = USA
+				tag = CSA
+				tag = FSA
+			}
+			is_greater_power = no
+			ai = yes
+		}
+		
+		allow = {
+			139 = { owned_by = USA }
+			war = no
+			government = democracy
+			OR = {
+				sphere_owner = { is_sphere_leader_of = USA }
+				in_sphere = USA
+			}
+			USA = {
+				war = no
+				government = democracy
+				relation = { who = THIS value = 150 }
+			}
+		}
+		
+		effect = {
+			set_country_flag = asked_to_rejoin_usa
+			USA = { country_event = 60130 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	second_alaskan_purchase = {
+		picture = alaskan_purchase
+		potential = {
+			1 = {
+				owned_by = THIS
+				is_core = THIS
+			}
+			2599 = {
+				empty = no
+				is_core = THIS
+				NOT = { owned_by = THIS }
+			}
+			NOT = { has_country_flag = second_alaskan_purchase }
+		}
+		
+		allow = {
+			war = no
+			money = 50000
+			2599 = {
+				owner = {
+					war = no
+					relation = { who = THIS value = 50 }
+				}
+			}
+		}
+		
+		effect = {
+			set_country_flag = second_alaskan_purchase
+			2599 = {
+				owner = { country_event = 44140 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	hawaiian_purchase = {
+		picture = annex_hawaii
+		potential = {
+			658 = {
+				owned_by = THIS
+				is_core = THIS
+			}
+			2524 = {
+				empty = no
+				is_core = THIS
+				NOT = { owned_by = THIS }
+			}
+			NOT = { has_country_flag = hawaiian_purchase }
+		}
+		
+		allow = {
+			war = no
+			money = 50000
+			2524 = {
+				owner = {
+					war = no
+					relation = { who = THIS value = 50 }
+				}
+			}
+		}
+		
+		effect = {
+			set_country_flag = hawaiian_purchase
+			2524 = { owner = { country_event = 44145 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	fsa_enact_anaconda_plan = {
+		picture = enact_anaconda_plan
+		potential = {
 			tag = USA
-			has_global_flag = disunited_states
-			has_country_modifier = begin_disunited_states
+			FSA = {
+				any_owned_province = { has_building = naval_base }
+				war_with = THIS
+			}
+			NOT = { has_global_flag = anaconda_plan_active }
 		}
-		NOT = { has_province_modifier = sons_of_liberty }
-		OR = {
-			average_consciousness = 7
-			average_militancy = 4
-			controlled_by_rebels = yes
+		
+		allow = {
+			FSA = {
+				blockade = 0.8
+			}
 		}
-		OR = {
-			controlled_by_rebels = yes
-			liberal = 30
-			anarcho_liberal = 20
-			AND = {
-				liberal = 20
-				OR = {
-					any_neighbor_province = { has_province_modifier = sons_of_liberty }
-					any_neighbor_province = {
-						NOT = { owned_by = USA }
-						NOT = { owned_by = ENG }
-						NOT = { owned_by = CAN }
-						NOT = { owned_by = MEX }
-					}
+		
+		effect = {
+			FSA = {
+				add_country_modifier = {
+					name = anaconda_plan
+					duration = -1
 				}
 			}
-		}
-		is_core = USA
-		is_colonial = no
-	}
-
-	mean_time_to_happen = {
-		months = 50
-		modifier = {
-			factor = 0.8
-			any_neighbor_province = { has_province_modifier = sons_of_liberty }
-		}
-		modifier = {
-			factor = 1.2
-			NOT = { any_neighbor_province = { has_province_modifier = sons_of_liberty } }
-		}
-		modifier = {
-			factor = 1.5
-			NOT = { liberal = 40 }
-		}
-		modifier = {
-			factor = 1.2
-			NOT = {
-				state_scope = { average_militancy = 2 }
-			}
-		}
-		modifier = {
-			factor = 0.9
-			state_scope = { average_militancy = 3 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 4 }
-		}
-		modifier = {
-			factor = 0.1
-			controlled_by_rebels = yes
-		}
-		modifier = {
-			factor = 3
-			state_scope = {
-				any_owned_province = {
-					country_units_in_province = USA
-				}
-			}
-		}
-		modifier = {
-			factor = 0.5
-			any_neighbor_province = {
-				NOT = { owned_by = USA }
-				NOT = { owned_by = ENG }
-				NOT = { owned_by = CAN }
-				NOT = { owned_by = MEX }
-			}
-		}
-		modifier = {
-			factor = 2
-			owner = { government = hms_government }
-		}
-	}
-
-	option = {
-		name = "EVT95261OPTA"
-		state_scope = {
-			any_pop = {
-				ideology = {
-					value = liberal
-					factor = 0.1
-				}
-				scaled_militancy = {
-					ideology = liberal
-					factor = 3
-				}
-			}
-			any_owned = {
-				add_province_modifier = {
-					name = sons_of_liberty
-					duration = 365
-				}
-			}
-		}
-	}										
-
-	option = {
-		name = "EVT95261OPTB"
-		state_scope = {
-			any_owned = {
-				add_province_modifier = {
-					name = sons_of_liberty
-					duration = 1095
-				}
-			}
-		}
-	}
-}
-
-country_event = {
-	
-	id = 95262
-	title = "EVTNAME95262" #The Union Reborn
-	desc = "EVTDESC95262"
-	picture = "Celebration"
-
-	trigger = {
-		tag = USA
-		government = democracy
-		has_global_flag = disunited_states
-	}
-
-	mean_time_to_happen = {
-		days = 1
-	}
-
-	option = {
-		name = "EVT95262OPTA"
-		clr_global_flag = disunited_states
-		remove_country_modifier = begin_disunited_states
-		any_owned = {
-			limit = { has_province_modifier = sons_of_liberty }
-			remove_province_modifier = sons_of_liberty
-		}
-		any_pop = {
-			limit = {
-				location = { is_core = USA }
-			}
-			scaled_militancy = {
-				ideology = liberal
-				factor = -6
-			}
-		}
-	}
-}
-
-#FSA
-country_event = {
-	id = 95265
-	title = "EVTNAME95265" #The Philadelphia Convention
-	desc = "EVTDESC95265"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 223
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
-					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
-						}
-						average_militancy = 4
-					}
-				}
-			}
-		}
-		NOT = {
-			FSA = { exists = yes }
-			has_country_flag = FSA_created
+			set_global_flag = anaconda_plan_active
 		}
 	}
 	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			223 = { controlled_by = REB }
+	fsa_shermans_march_to_the_sea = {
+		picture = shermans_march_to_the_sea
+		potential = {
+			tag = FSA
+			war_with = CSA
+			NOT = { has_country_flag = sherman_marched_to_the_sea }
+		}		
+		allow = {
+			controls = 201
+			controls = 2555
+			controls = 204
 		}
-		modifier = {
-			factor = 0.8
-			223 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			223 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			223 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			223 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				UIL = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = FSA_created
-		prestige = -25
-		USA_168 = { add_core = FSA } #Illinois
-		USA_170 = { add_core = FSA } #Indiana
-		USA_151 = { add_core = FSA } #Iowa
-		USA_185 = { add_core = FSA } #Kentucky
-		USA_219 = { add_core = FSA } #Maryland
-		USA_176 = { add_core = FSA } #Michigan
-		USA_148 = { add_core = FSA } #Missouri
-		USA_158 = { add_core = FSA } #Minnesota
-		USA_232 = { add_core = FSA } #New York
-		USA_231 = { add_core = FSA } #New Jersey
-		USA_178 = { add_core = FSA } #Ohio
-		USA_223 = { add_core = FSA } #Pennsylvania
-		USA_218 = { add_core = FSA } #West Virginia
-		USA_162 = { add_core = FSA } #Wisconsin
-		any_state = {
-			limit = {
-				NOT = {
-					any_owned_province = { is_capital = yes }
-				}
-				any_owned_province = {
-					is_core = FSA
-					OR = {
-						AND = {
-							controlled_by = REB
-							province_control_days = 120
-							NOT = { country_units_in_province = USA }
-						}
-						AND = {
-							has_province_modifier = sons_of_liberty
-							OR = {
-								controlled_by = REB
-								average_militancy = 8
-							}
-							state_scope = {
-								OR = {
-									liberal = 30
-									anarcho_liberal = 20
-								}
-								average_militancy = 4
-							}
-						}
-					}
-				}
-			}
-			any_owned = {
-				change_controller = THIS
-				secede_province = FSA
-			}
-		}
-		FSA = {
-			capital = 223
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = FSA value = -200 }
-		diplomatic_influence = { who = FSA value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-province_event = {
-	id = 95266
-	title = "EVTNAME95266" #Congress of $STATENAME$ - FSA
-	desc = "EVTDESC95266"
-	
-	trigger = {
-		owned_by = USA
-		is_core = FSA
-		is_colonial = no
-		state_scope = {
-			NOT = {
-				any_owned_province = { is_capital = yes }
-			}
-		}
-		OR = {
-			AND = {
-				controlled_by = REB
-				province_control_days = 120
-				NOT = { country_units_in_province = USA }
-			}
-			AND = {
-				has_province_modifier = sons_of_liberty
-				OR = {
-					controlled_by = REB
-					average_militancy = 8
-				}
-				state_scope = {
-					OR = {
-						liberal = 30
-						anarcho_liberal = 20
-					}
-					average_militancy = 4
-				}
-			}
-		}
-		FSA = {
-			exists = yes
-			NOT = {
-				num_of_revolts = 1
-				is_disarmed = yes
-				truce_with = USA
-			}
-			OR = {
-				war = no
-				NOT = { national_provinces_occupied = .25 }
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 5 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 6 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 7 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 8 }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				UIL = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			owner = { government = democracy }
-		}
-		modifier = {
-			factor = 1.5
-			owner = { government = hms_government }
-		}
-	}
-	
-	option = {
-		name = "EVT95266OPTA"
-		state_scope = {
-			any_owned = {
-				limit = { is_core = FSA }
+		
+		effect = {
+			set_country_flag = sherman_marched_to_the_sea
+			201 = {
 				any_pop = {
-					scaled_militancy = {
-						ideology = liberal
-						factor = -8
-					}
-				}
-				change_controller = THIS
-				secede_province = FSA
-			}
-		}
-	}
-}
-
-#CSA
-country_event = {
-	id = 95267
-	title = "EVTNAME95267" #The New Confederacy
-	desc = "EVTDESC95267"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 60
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
-					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
-						}
-						average_militancy = 4
-					}
+					reduce_pop = 0.70
 				}
 			}
-		}
-		NOT = {
-			CSA = { exists = yes }
-			has_country_flag = CSA_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			60 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			60 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			60 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			60 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			60 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				UNB = { exists = yes }
-				UIL = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = CSA_created
-		prestige = -25
-		USA_196 = { add_core = CSA } #Alabama
-		USA_144 = { add_core = CSA } #Arkansas
-		USA_200 = { add_core = CSA } #Florida
-		USA_201 = { add_core = CSA } #Georgia
-		USA_185 = { add_core = CSA } #Kentucky
-		USA_139 = { add_core = CSA } #Louisiana
-		USA_219 = { add_core = CSA } #Maryland
-		USA_194 = { add_core = CSA } #Mississippi
-		USA_2556 = { add_core = CSA } #North Carolina
-		USA_205 = { add_core = CSA } #South Carolina
-		USA_188 = { add_core = CSA } #Tennessee
-		USA_211 = { add_core = CSA } #Virginia
-		USA_218 = { add_core = CSA } #West Virginia
-		any_state = {
-			limit = {
-				NOT = {
-					any_owned_province = { is_capital = yes }
-				}
-				any_owned_province = {
-					is_core = CSA
-					OR = {
-						AND = {
-							controlled_by = REB
-							province_control_days = 120
-							NOT = { country_units_in_province = USA }
-						}
-						AND = {
-							has_province_modifier = sons_of_liberty
-							OR = {
-								controlled_by = REB
-								average_militancy = 8
-							}
-							state_scope = {
-								OR = {
-									liberal = 30
-									anarcho_liberal = 20
-								}
-								average_militancy = 4
-							}
-						}
-					}
-				}
-			}
-			any_owned = {
-				change_controller = THIS
-				secede_province = CSA
-			}
-		}
-		CSA = {
-			capital = 60
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = CSA value = -200 }
-		diplomatic_influence = { who = CSA value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-province_event = {
-	id = 95268
-	title = "EVTNAME95266" #Congress of $STATENAME$ - CSA
-	desc = "EVTDESC95268"
-	
-	trigger = {
-		owned_by = USA
-		is_core = CSA
-		is_colonial = no
-		state_scope = {
-			NOT = {
-				any_owned_province = { is_capital = yes }
-			}
-		}
-		OR = {
-			AND = {
-				controlled_by = REB
-				province_control_days = 120
-				NOT = { country_units_in_province = USA }
-			}
-			AND = {
-				has_province_modifier = sons_of_liberty
-				OR = {
-					controlled_by = REB
-					average_militancy = 8
-				}
-				state_scope = {
-					OR = {
-						liberal = 30
-						anarcho_liberal = 20
-					}
-					average_militancy = 4
-				}
-			}
-		}
-		CSA = {
-			exists = yes
-			NOT = {
-				num_of_revolts = 1
-				is_disarmed = yes
-				truce_with = USA
-			}
-			OR = {
-				war = no
-				NOT = { national_provinces_occupied = .25 }
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 5 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 6 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 7 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 8 }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				UNB = { exists = yes }
-				UIL = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			owner = { government = democracy }
-		}
-		modifier = {
-			factor = 1.5
-			owner = { government = hms_government }
-		}
-	}
-	
-	option = {
-		name = "EVT95266OPTA"
-		state_scope = {
-			any_owned = {
-				limit = { is_core = CSA }
+			2555 = {
 				any_pop = {
-					scaled_militancy = {
-						ideology = liberal
-						factor = -8
-					}
-				}
-				change_controller = THIS
-				secede_province = CSA
-			}
-		}
-	}
-}
-
-#Oregon
-country_event = {
-	id = 95269
-	title = "EVTNAME95269" #The Secession of Oregon
-	desc = "EVTDESC95269"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 81
-			is_colonial = no
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
-					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
-						}
-						average_militancy = 4
-					}
+					reduce_pop = 0.90
 				}
 			}
-		}
-		NOT = {
-			UOR = { exists = yes }
-			has_country_flag = UOR_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			81 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			81 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			81 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			81 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			81 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				UIL = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = UOR_created
-		prestige = -25
-		USA_78 = { add_core = UOR } #Washington
-		USA_81 = { add_core = UOR } #Oregon
-		USA_91 = { add_core = UOR } #Idaho
-		random_owned = {
-			limit = { region = CAN_13 } #Columbia
-			state_scope = { add_core = UOR }
-		}
-		any_state = {
-			limit = {
-				any_owned_province = {
-					is_core = UOR
-					OR = {
-						AND = {
-							controlled_by = REB
-							province_control_days = 120
-							NOT = { country_units_in_province = USA }
-						}
-						AND = {
-							has_province_modifier = sons_of_liberty
-							OR = {
-								controlled_by = REB
-								average_militancy = 8
-							}
-							state_scope = {
-								OR = {
-									liberal = 30
-									anarcho_liberal = 20
-								}
-								average_militancy = 4
-							}
-						}
-					}
-				}
-			}
-			any_owned = {
-				change_controller = THIS
-				secede_province = UOR
-			}
-		}
-		UOR = {
-			capital = 81
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = UOR value = -200 }
-		diplomatic_influence = { who = UOR value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-province_event = {
-	id = 95270
-	title = "EVTNAME95266" #Congress of $STATENAME$ - Oregon
-	desc = "EVTDESC95270"
-	
-	trigger = {
-		owned_by = USA
-		is_core = UOR
-		is_colonial = no
-		OR = {
-			AND = {
-				controlled_by = REB
-				province_control_days = 120
-				NOT = { country_units_in_province = USA }
-			}
-			AND = {
-				has_province_modifier = sons_of_liberty
-				OR = {
-					controlled_by = REB
-					average_militancy = 8
-				}
-				state_scope = {
-					OR = {
-						liberal = 30
-						anarcho_liberal = 20
-					}
-					average_militancy = 4
-				}
-			}
-		}
-		UOR = {
-			exists = yes
-			NOT = {
-				num_of_revolts = 1
-				is_disarmed = yes
-				truce_with = USA
-			}
-			OR = {
-				war = no
-				NOT = { national_provinces_occupied = .25 }
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 5 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 6 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 7 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 8 }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				UIL = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			owner = { government = democracy }
-		}
-		modifier = {
-			factor = 1.5
-			owner = { government = hms_government }
-		}
-	}
-	
-	option = {
-		name = "EVT95266OPTA"
-		state_scope = {
-			any_owned = {
-				limit = { is_core = UOR }
+			204 = {
 				any_pop = {
-					scaled_militancy = {
-						ideology = liberal
-						factor = -8
-					}
-				}
-				change_controller = THIS
-				secede_province = UOR
-			}
-		}
-	}
-}
-
-#Colorado Republic
-country_event = {
-	id = 95271
-	title = "EVTNAME95271" #The Colorado Convention
-	desc = "EVTDESC95271"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 106
-			is_colonial = no
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
-					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
-						}
-						average_militancy = 4
-					}
+					reduce_pop = 0.90
 				}
 			}
-		}
-		NOT = {
-			UNB = { exists = yes }
-			has_country_flag = UNB_created
+			CSA = {
+				war_exhaustion = 4
+			}
 		}
 	}
 	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			106 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			106 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			106 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			106 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			106 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
+	raise_the_flag_of_freedom = {
+		picture = switch_to_liberty
+		potential = {
 			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UIL = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
+				tag = FSA
+				tag = NEN
+				tag = UIL
+				tag = UOR
+				tag = DAK
+				tag = DES
+				tag = CAL
+				tag = UNM
+				tag = UNB
 			}
+			NOT = { has_country_flag = flag_of_freedom }
 		}
-		modifier = {
-			factor = 2
-			government = democracy
+		
+		allow = {
+			war_with = USA
 		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = UNB_created
-		prestige = -25
-		USA_106 = { add_core = UNB } #Colorado
-		USA_126 = { add_core = UNB } #Kansas
-		USA_124 = { add_core = UNB } #Nebraska
-		MEX_103 = { add_core = UNB } #New Mexico
-		USA_129 = { add_core = UNB } #Oklahoma
-		any_state = {
-			limit = {
-				any_owned_province = {
-					is_core = UNB
-					OR = {
-						AND = {
-							controlled_by = REB
-							province_control_days = 120
-							NOT = { country_units_in_province = USA }
-						}
-						AND = {
-							has_province_modifier = sons_of_liberty
-							OR = {
-								controlled_by = REB
-								average_militancy = 8
-							}
-							state_scope = {
-								OR = {
-									liberal = 30
-									anarcho_liberal = 20
-								}
-								average_militancy = 4
-							}
-						}
-					}
-				}
-			}
-			any_owned = {
-				change_controller = THIS
-				secede_province = UNB
-			}
-		}
-		UNB = {
-			capital = 106
-			leadership = 40
+		
+		effect = {
+			set_country_flag = flag_of_freedom
 			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
+				limit = { is_primary_culture = yes }
+				militancy = -4
+				dominant_issue = {
+					factor = 0.05
+					value = jingoism
 				}
 			}
-		}
-		relation = { who = UNB value = -200 }
-		diplomatic_influence = { who = UNB value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
+			leadership = 40
+			small_arms = 100
+			regular_clothes = 100		
 		}
 	}
-}
-
-province_event = {
-	id = 95272
-	title = "EVTNAME95266" #Congress of $STATENAME$ - Colorado Republic
-	desc = "EVTDESC95272"
 	
-	trigger = {
-		owned_by = USA
-		is_core = UNB
-		is_colonial = no
-		OR = {
-			AND = {
-				controlled_by = REB
-				province_control_days = 120
-				NOT = { country_units_in_province = USA }
-			}
-			AND = {
-				has_province_modifier = sons_of_liberty
-				OR = {
-					controlled_by = REB
-					average_militancy = 8
-				}
-				state_scope = {
-					OR = {
-						liberal = 30
-						anarcho_liberal = 20
-					}
-					average_militancy = 4
-				}
-			}
-		}
-		UNB = {
-			exists = yes
+	fsa_enact_radical_reconstruction = {
+		picture = enact_radical_reconstruction
+		potential = {
+			tag = USA
+			war = no
+			has_global_flag = alt_american_civil_war_has_happened
+			owns = 232
+			owns = 243
+			owns = 223
 			NOT = {
-				num_of_revolts = 1
-				is_disarmed = yes
-				truce_with = USA
-			}
-			OR = {
-				war = no
-				NOT = { national_provinces_occupied = .25 }
+				exists = FSA
+				has_country_flag = has_used_radical_reconstruction
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 5 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 6 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 7 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 8 }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				CSA = { exists = yes }
-				FSA = { exists = yes }
-				UIL = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			owner = { government = democracy }
-		}
-		modifier = {
-			factor = 1.5
-			owner = { government = hms_government }
-		}
-	}
-	
-	option = {
-		name = "EVT95266OPTA"
-		state_scope = {
-			any_owned = {
-				limit = { is_core = UNB }
-				any_pop = {
-					scaled_militancy = {
-						ideology = liberal
-						factor = -8
-					}
-				}
-				change_controller = THIS
-				secede_province = UNB
-			}
-		}
-	}
-}
-
-#New American Alliance
-country_event = {
-	id = 95273
-	title = "EVTNAME95273" #The Chicago Convention
-	desc = "EVTDESC95273"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 163
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
-					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
-						}
-						average_militancy = 4
-					}
-				}
-			}
-		}
-		NOT = {
-			UIL = { exists = yes }
-			has_country_flag = UIL_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			163 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			163 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			163 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			163 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			163 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = UIL_created
-		prestige = -25
-		USA_168 = { add_core = UIL } #Illinois
-		USA_151 = { add_core = UIL } #Iowa
-		USA_176 = { add_core = UIL } #Michigan
-		USA_148 = { add_core = UIL } #Missouri
-		USA_158 = { add_core = UIL } #Minnesota
-		USA_162 = { add_core = UIL } #Wisconsin
-		any_state = {
-			limit = {
-				any_owned_province = {
-					is_core = UIL
-					OR = {
-						AND = {
-							controlled_by = REB
-							province_control_days = 120
-							NOT = { country_units_in_province = USA }
-						}
-						AND = {
-							has_province_modifier = sons_of_liberty
-							OR = {
-								controlled_by = REB
-								average_militancy = 8
-							}
-							state_scope = {
-								OR = {
-									liberal = 30
-									anarcho_liberal = 20
-								}
-								average_militancy = 4
-							}
-						}
-					}
-				}
-			}
-			any_owned = {
-				change_controller = THIS
-				secede_province = UIL
-			}
-		}
-		UIL = {
-			capital = 163
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = UIL value = -200 }
-		diplomatic_influence = { who = UIL value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-province_event = {
-	id = 95274
-	title = "EVTNAME95266" #Congress of $STATENAME$ - New American Alliance
-	desc = "EVTDESC95274"
-	
-	trigger = {
-		owned_by = USA
-		is_core = UIL
-		is_colonial = no
-		OR = {
-			AND = {
-				controlled_by = REB
-				province_control_days = 120
-				NOT = { country_units_in_province = USA }
-			}
-			AND = {
-				has_province_modifier = sons_of_liberty
-				OR = {
-					controlled_by = REB
-					average_militancy = 8
-				}
-				state_scope = {
-					OR = {
-						liberal = 30
-						anarcho_liberal = 20
-					}
-					average_militancy = 4
-				}
-			}
-		}
-		UIL = {
-			exists = yes
+		
+		allow = {
 			NOT = {
-				num_of_revolts = 1
-				is_disarmed = yes
-				truce_with = USA
-			}
-			OR = {
-				war = no
-				NOT = { national_provinces_occupied = .25 }
+				average_militancy = 4
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 5 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 6 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 7 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 8 }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				CSA = { exists = yes }
-				FSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				DAK = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			owner = { government = democracy }
-		}
-		modifier = {
-			factor = 1.5
-			owner = { government = hms_government }
-		}
-	}
-	
-	option = {
-		name = "EVT95266OPTA"
-		state_scope = {
-			any_owned = {
-				limit = { is_core = UIL }
-				any_pop = {
-					scaled_militancy = {
-						ideology = liberal
-						factor = -8
-					}
-				}
-				change_controller = THIS
-				secede_province = UIL
-			}
-		}
-	}
-}
-
-#Dakota Republic
-country_event = {
-	id = 95275
-	title = "EVTNAME95275" #The Dakota Republic
-	desc = "EVTDESC95275"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 122
-			is_colonial = no
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
-					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
-						}
-						average_militancy = 4
-					}
-				}
-			}
-		}
-		NOT = {
-			DAK = { exists = yes }
-			has_country_flag = DAK_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			122 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			122 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			122 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			122 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			122 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = DAK_created
-		prestige = -25
-		USA_121 = { add_core = DAK } #South Dakota
-		USA_118 = { add_core = DAK } #North Dakota
-		USA_116 = { add_core = DAK } #Montana
-		USA_124 = { add_core = DAK } #Nebraska
-		USA_111 = { add_core = DAK } #Wyoming
-		any_state = {
-			limit = {
-				any_owned_province = {
-					is_core = DAK
-					OR = {
-						AND = {
-							controlled_by = REB
-							province_control_days = 120
-							NOT = { country_units_in_province = USA }
-						}
-						AND = {
-							has_province_modifier = sons_of_liberty
-							OR = {
-								controlled_by = REB
-								average_militancy = 8
-							}
-							state_scope = {
-								OR = {
-									liberal = 30
-									anarcho_liberal = 20
-								}
-								average_militancy = 4
-							}
-						}
-					}
-				}
-			}
-			any_owned = {
-				change_controller = THIS
-				secede_province = DAK
-			}
-		}
-		DAK = {
-			capital = 122
-			leadership = 40
+		effect = {
+			war_exhaustion = -3
 			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
+				limit = {
+					has_pop_culture = yankee
 				}
+				consciousness = -5
+				militancy = -5
 			}
-		}
-		relation = { who = DAK value = -200 }
-		diplomatic_influence = { who = DAK value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
+			any_state = {
+				limit = { is_slave = no }
+				is_slave = yes
 			}
+			clr_global_flag = alt_american_civil_war_has_happened
+			set_country_flag = has_used_radical_reconstruction
 		}
 	}
-}
-
-province_event = {
-	id = 95276
-	title = "EVTNAME95266" #Congress of $STATENAME$ - Dakota Republic
-	desc = "EVTDESC95276"
 	
-	trigger = {
-		owned_by = USA
-		is_core = DAK
-		is_colonial = no
-		OR = {
-			AND = {
-				controlled_by = REB
-				province_control_days = 120
-				NOT = { country_units_in_province = USA }
-			}
-			AND = {
-				has_province_modifier = sons_of_liberty
-				OR = {
-					controlled_by = REB
-					average_militancy = 8
-				}
-				state_scope = {
+	restore_the_union = {
+		picture = switch_to_liberty
+		potential = {
+			is_culture_group = american_cultures
+			USA = { exists = no }
+		}
+		
+		allow = {
+			war = no
+			USA = {
+				all_core = {
 					OR = {
-						liberal = 30
-						anarcho_liberal = 20
-					}
-					average_militancy = 4
-				}
-			}
-		}
-		DAK = {
-			exists = yes
-			NOT = {
-				num_of_revolts = 1
-				is_disarmed = yes
-				truce_with = USA
-			}
-			OR = {
-				war = no
-				NOT = { national_provinces_occupied = .25 }
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 5 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 6 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 7 }
-		}
-		modifier = {
-			factor = 0.8
-			state_scope = { average_militancy = 8 }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				CSA = { exists = yes }
-				FSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				UNM = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			owner = { government = democracy }
-		}
-		modifier = {
-			factor = 1.5
-			owner = { government = hms_government }
-		}
-	}
-	
-	option = {
-		name = "EVT95266OPTA"
-		state_scope = {
-			any_owned = {
-				limit = { is_core = DAK }
-				any_pop = {
-					scaled_militancy = {
-						ideology = liberal
-						factor = -8
-					}
-				}
-				change_controller = THIS
-				secede_province = DAK
-			}
-		}
-	}
-}
-
-#Pueblo Republic
-country_event = {
-	id = 95277
-	title = "EVTNAME95277" #The Pueblo Republic
-	desc = "EVTDESC95277"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 100
-			is_colonial = no
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
-					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
+						owned_by = THIS
+						owner = {
+							NOT = { is_culture_group = american_cultures }
 						}
-						average_militancy = 4
+						owner = { in_sphere = THIS }
+						owner = { vassal_of = THIS }
+						empty = yes
+						region = USA_1
+						region = HAW_658
 					}
 				}
 			}
-		}
-		NOT = {
-			UNM = { exists = yes }
-			has_country_flag = UNM_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			100 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			100 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			100 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			100 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			100 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				DAK = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = UNM_created
-		prestige = -25
-		MEX_100 = { add_core = UNM } #Arizona
-		MEX_103 = { add_core = UNM } #New Mexico
-		any_owned = {
-			limit = {
-				OR = {
-					region = MEX_100
-					region = MEX_103
-				}
-			}
-			change_controller = THIS
-			secede_province = UNM
-		}
-		UNM = {
-			capital = 100
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = UNM value = -200 }
-		diplomatic_influence = { who = UNM value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-#Deseret
-country_event = {
-	id = 95278
-	title = "EVTNAME95278" #The Mormon Convention
-	desc = "EVTDESC95278"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 97
-			is_core = DES
-			is_colonial = no
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
+			FSA = {
+				all_core = {
 					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
+						owned_by = THIS
+						owner = {
+							NOT = { is_culture_group = american_cultures }
 						}
-						average_militancy = 4
+						owner = { in_sphere = THIS }
+						owner = { vassal_of = THIS }
+						empty = yes
+						region = USA_1
+						region = HAW_658
 					}
 				}
 			}
-		}
-		NOT = {
-			DES = { exists = yes }
-			has_country_flag = DES_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			97 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			97 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			97 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			97 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			97 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				DAK = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = DES_created
-		prestige = -25
-		any_owned = {
-			limit = {
-				OR = {
-					region = MEX_97 #Utah
-					region = MEX_94 #Nevada
-				}
-			}
-			change_controller = THIS
-			secede_province = DES
-		}
-		DES = {
-			set_country_flag = usstatehood_we_have_applied
-			political_reform = universal_voting
-			political_reform = population_equal_weight
-			political_reform = yes_meeting
-			political_reform = free_press
-			political_reform = non_socialist
-			political_reform = secret_ballots
-			capital = 97
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = DES value = -200 }
-		diplomatic_influence = { who = DES value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-#California
-country_event = {
-	id = 95279
-	title = "EVTNAME95279" #The Convention of San Francisco
-	desc = "EVTDESC95279"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 84
-			is_colonial = no
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
+			CSA = {
+				all_core = {
 					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
+						owned_by = THIS
+						owner = {
+							NOT = { is_culture_group = american_cultures }
 						}
-						average_militancy = 4
+						owner = { in_sphere = THIS }
+						owner = { vassal_of = THIS }
+						empty = yes
+						region = USA_1
+						region = HAW_658
 					}
 				}
 			}
 		}
-		NOT = {
-			CAL = { exists = yes }
-			has_country_flag = CAL_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			84 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			84 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			84 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			84 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			84 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				DAK = { exists = yes }
+		
+		effect = {
+			clr_global_flag = alt_american_civil_war_has_happened
+			prestige = 20
+			all_core = {
+				remove_core = THIS
+				add_core = USA
 			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = CAL_created
-		prestige = -25
-		any_owned = {
-			limit = {
-				region = MEX_85 #California
-			}
-			change_controller = THIS
-			secede_province = CAL
-		}
-		CAL = {
-			set_country_flag = usstatehood_we_have_applied
-			ruling_party_ideology = liberal
-			political_reform = universal_voting
-			political_reform = population_equal_weight
-			political_reform = yes_meeting
-			political_reform = free_press
-			political_reform = non_socialist
-			political_reform = secret_ballots
-			capital = 84
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = CAL value = -200 }
-		diplomatic_influence = { who = CAL value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-#Texas
-country_event = {
-	id = 95280
-	title = "EVTNAME95280" #The Texan Secession
-	desc = "EVTDESC95280"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 133
-			is_colonial = no
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
+			change_tag = USA
+			any_country = {
+				limit = {
+					NOT = { is_greater_power = yes }
+					is_culture_group = THIS
+					in_sphere = THIS
 					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
-						}
-						average_militancy = 4
+						is_vassal = no
+						vassal_of = THIS
 					}
 				}
+				country_event = 11101
 			}
-		}
-		NOT = {
-			TEX = { exists = yes }
-			has_country_flag = TEX_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			133 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			133 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			133 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			133 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			133 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				DAK = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = TEX_created
-		prestige = -25
-		any_owned = {
-			limit = {
-				region = TEX_132 #Texas
-			}
-			change_controller = THIS
-			secede_province = TEX
-		}
-		TEX = {
-			set_country_flag = usstatehood_we_have_applied
-			ruling_party_ideology = liberal
-			political_reform = universal_voting
-			political_reform = population_equal_weight
-			political_reform = yes_meeting
-			political_reform = free_press
-			political_reform = non_socialist
-			political_reform = secret_ballots
-			capital = 133
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = TEX value = -200 }
-		diplomatic_influence = { who = TEX value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-#New England
-country_event = {
-	id = 95281
-	title = "EVTNAME95281" #The Convention of Boston
-	desc = "EVTDESC95281"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		any_owned_province = {
-			province_id = 243
-			is_colonial = no
-			OR = {
-				AND = {
-					controlled_by = REB
-					province_control_days = 120
-					NOT = { country_units_in_province = USA }
-				}
-				AND = {
-					has_province_modifier = sons_of_liberty
-					OR = {
-						controlled_by = REB
-						average_militancy = 8
-					}
-					state_scope = {
-						OR = {
-							liberal = 30
-							anarcho_liberal = 20
-						}
-						average_militancy = 4
-					}
-				}
-			}
-		}
-		NOT = {
-			NEN = { exists = yes }
-			has_country_flag = NEN_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			243 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			243 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			243 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			243 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			243 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				DAK = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = NEN_created
-		prestige = -25
-		any_owned = {
-			limit = {
-				is_core = NEN
-			}
-			change_controller = THIS
-			secede_province = NEN
-		}
-		NEN = {
-			set_country_flag = usstatehood_we_have_applied
-			ruling_party_ideology = liberal
-			political_reform = universal_voting
-			political_reform = population_equal_weight
-			political_reform = yes_meeting
-			political_reform = free_press
-			political_reform = non_socialist
-			political_reform = secret_ballots
-			capital = 243
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = NEN value = -200 }
-		diplomatic_influence = { who = NEN value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-#Alaska
-country_event = {
-	id = 95282
-	title = "EVTNAME95282" #The Alaskan Convention
-	desc = "EVTDESC95282"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		3 = {
-			owned_by = THIS
-			is_colonial = no
-		}
-		NOT = { owns = 6 }
-		NOT = { owns = 13 }
-		NOT = { owns = 18 }
-		NOT = { owns = 78 }
-		NOT = { owns = 81 }
-		NOT = { owns = 84 }
-		NOT = {
-			LSK = { exists = yes }
-			has_country_flag = LSK_created
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			3 = { controlled_by = REB }
-		}
-		modifier = {
-			factor = 0.8
-			3 = { state_scope = { average_militancy = 5 } }
-		}
-		modifier = {
-			factor = 0.8
-			3 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			3 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			3 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				DAK = { exists = yes }
-			}
-		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
-		}
-	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = LSK_created
-		prestige = -25
-		USA_1 = { remove_core = USA }
-		any_owned = {
-			limit = { is_core = LSK }
-			change_controller = THIS
-			secede_province = LSK
-		}
-		LSK = {
-			set_country_flag = usstatehood_we_have_applied
-			primary_culture = yankee
+			add_accepted_culture = yankee
 			add_accepted_culture = dixie
-			ruling_party_ideology = liberal
-			political_reform = universal_voting
-			political_reform = population_equal_weight
-			political_reform = yes_meeting
-			political_reform = free_press
-			political_reform = non_socialist
-			political_reform = secret_ballots
-			capital = 3
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
-				}
-			}
-		}
-		relation = { who = LSK value = -200 }
-		diplomatic_influence = { who = LSK value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
-			}
-		}
-	}
-}
-
-#Hawaii
-country_event = {
-	id = 95283
-	title = "EVTNAME95283" #The Honolulu Convention
-	desc = "EVTDESC95283"
-	major = yes
-	
-	trigger = {
-		tag = USA
-		658 = {
-			owned_by = THIS
-			is_colonial = no
-		}
-		NOT = { owns = 1 }
-		NOT = { owns = 13 }
-		NOT = { owns = 78 }
-		NOT = { owns = 81 }
-		NOT = { owns = 84 }
-		NOT = {
-			HAW = { exists = yes }
-			has_country_flag = HAW_created
+			add_accepted_culture = texan
 		}
 	}
 	
-	mean_time_to_happen = {
-		months = 40
-		modifier = {
-			factor = 0.1
-			658 = { controlled_by = REB }
+	restore_washington_capital = {
+		potential = {
+			tag = USA
+			owns = 2146
+			NOT = {
+				capital = 2146
+				has_global_flag = alt_american_civil_war_has_happened
+			}
+		}	
+		
+		allow = {
+			controls = 2146
+			NOT = { capital = 2146 }
 		}
-		modifier = {
-			factor = 0.8
-			658 = { state_scope = { average_militancy = 5 } }
+		
+		effect = {
+			capital = 2146
+			prestige = 5
 		}
-		modifier = {
-			factor = 0.8
-			658 = { state_scope = { average_militancy = 6 } }
-		}
-		modifier = {
-			factor = 0.8
-			658 = { state_scope = { average_militancy = 7 } }
-		}
-		modifier = {
-			factor = 0.8
-			658 = { state_scope = { average_militancy = 8 } }
-		}
-		modifier = {
-			factor = 0.5
+	}
+	
+	move_capital_to_philadelphia = {
+		picture = restore_washington_capital
+		potential = {
 			OR = {
-				FSA = { exists = yes }
-				CSA = { exists = yes }
-				UNB = { exists = yes }
-				NEN = { exists = yes }
-				UIL = { exists = yes }
-				UOR = { exists = yes }
-				CAL = { exists = yes }
-				TEX = { exists = yes }
-				DAK = { exists = yes }
+				tag = USA
+				tag = FSA
 			}
+			owns = 223
+			OR = {
+				tag = FSA
+				AND = {
+					tag = USA
+					NOT = { owns = 2146 }
+				}
+			}
+			NOT = { capital = 223 }
+		}	
+		
+		allow = {
+			controls = 223
+			NOT = { capital = 223 }
 		}
-		modifier = {
-			factor = 2
-			government = democracy
-		}
-		modifier = {
-			factor = 1.5
-			government = hms_government
+		
+		effect = {
+			capital = 223
 		}
 	}
-
-	option = {
-		name = "EVT95260OPTA"
-		set_country_flag = HAW_created
-		prestige = -25
-		HAW_658 = { remove_core = USA }
-		HAW = { civilized = yes }
-		any_owned = {
-			limit = { region = HAW_658 }
-			change_controller = THIS
-			secede_province = HAW
+	
+	move_capital_to_boston = {
+		picture = restore_washington_capital
+		potential = {
+			OR = {
+				tag = USA
+				tag = FSA
+			}
+			owns = 243
+			OR = {
+				AND = {
+					tag = FSA
+					NOT = { owns = 223 }
+				}
+				AND = {
+					tag = USA
+					NOT = { owns = 2146 }
+					NOT = { owns = 223 }
+				}
+			}
+			NOT = { capital = 243 }
 		}
-		HAW = {
-			set_country_flag = usstatehood_we_have_applied
-			primary_culture = yankee
-			add_accepted_culture = polynesian
-			government = democracy
-			ruling_party_ideology = liberal
-			political_reform = universal_voting
-			political_reform = population_equal_weight
-			political_reform = yes_meeting
-			political_reform = free_press
-			political_reform = non_socialist
-			political_reform = secret_ballots
-			capital = 658
-			leadership = 40
-			any_pop = {
-				scaled_militancy = {
-					ideology = liberal
-					factor = -8
+		
+		allow = {
+			controls = 243
+			NOT = { capital = 243 }
+		}
+		
+		effect = {
+			capital = 243
+		}
+	}
+	
+	restore_richmond_capital = {
+		potential = {
+			tag = CSA
+			owns = 60
+			NOT = { capital = 60 }
+		}	
+		
+		allow = {
+			controls = 60
+			NOT = { capital = 60 }
+		}
+		
+		effect = {
+			capital = 60
+			prestige = 5
+		}
+	}
+	
+	move_capital_to_atlanta = {
+		picture = restore_richmond_capital
+		potential = {
+			tag = CSA
+			owns = 201
+			NOT = {
+				owns = 60
+				capital = 201
+			}
+		}	
+		
+		allow = {
+			controls = 201
+			NOT = { capital = 201 }
+		}
+		
+		effect = {
+			capital = 201
+		}
+		ai_will_do = { factor = 0 }
+	}
+	
+	recognize_puerto_rico = {
+		picture = gtfo
+		potential = {
+			tag = USA
+			PRI = {
+				exists = yes
+				is_vassal = no
+				part_of_sphere = no
+			}
+			NOT = {
+				war_policy = jingoism
+				has_country_flag = recognized_puerto_rico
+				war_with = PRI
+				any_owned_province = { is_core = PRI }
+			}
+		}
+		
+		allow = {
+			is_greater_power = yes
+		}
+		
+		effect = {
+			set_country_flag = recognized_puerto_rico
+			prestige = 5
+			relation = { who = PRI value = 100 }
+			diplomatic_influence = { who = PRI value = 100 }
+			any_country = {
+				limit = {
+					any_owned_province = {
+						is_core = PRI
+						is_core = USA
+					}
+				}
+				any_owned = {
+					limit = {
+						is_core = PRI
+						is_core = USA
+					}
+					remove_core = USA
 				}
 			}
 		}
-		relation = { who = HAW value = -200 }
-		diplomatic_influence = { who = HAW value = -200 }
-		any_pop = {
-			scaled_militancy = {
-				ideology = liberal
-				factor = 3
+	}
+	
+	recognize_cuba = {
+		picture = gtfo
+		potential = {
+			tag = USA
+			CUB = {
+				exists = yes
+				is_vassal = no
+				part_of_sphere = no
+			}
+			NOT = {
+				war_policy = jingoism
+				has_country_flag = recognized_cuba
+				war_with = CUB
+				any_owned_province = { is_core = CUB }
+			}
+		}
+		
+		allow = {
+			is_greater_power = yes
+		}
+		
+		effect = {
+			set_country_flag = recognized_cuba
+			prestige = 5
+			relation = { who = CUB value = 100 }
+			diplomatic_influence = { who = CUB value = 100 }
+			any_country = {
+				limit = {
+					any_owned_province = {
+						is_core = CUB
+						is_core = USA
+					}
+				}
+				any_owned = {
+					limit = {
+						is_core = CUB
+						is_core = USA
+					}
+					remove_core = USA
+				}
 			}
 		}
 	}
+	
+	recognize_phillipines = {
+		picture = gtfo
+		potential = {
+			tag = USA
+			revolution_n_counterrevolution = 1
+			PHL = {
+				exists = yes
+				is_vassal = no
+				part_of_sphere = no
+			}
+			NOT = {
+				war_policy = jingoism
+				has_country_flag = recognized_phillipines
+				war_with = PHL
+				any_owned_province = { is_core = PHL }
+			}
+		}
+		
+		allow = {
+			is_greater_power = yes
+		}
+		
+		effect = {
+			set_country_flag = recognized_phillipines
+			prestige = 5
+			relation = { who = PHL value = 100 }
+			diplomatic_influence = { who = PHL value = 100 }
+			any_country = {
+				limit = {
+					any_owned_province = {
+						is_core = PHL
+						is_core = USA
+					}
+				}
+				any_owned = {
+					limit = {
+						is_core = PHL
+						is_core = USA
+					}
+					remove_core = USA
+				}
+			}
+		}
+	}
+	
+	recognize_the_csa = {
+		picture = reform_csa
+		potential = {
+			is_greater_power = yes
+			has_global_flag = american_civil_war_has_happened
+			exists = CSA
+			CSA = {
+				NOT = { in_sphere = USA }
+			}
+			exists = USA
+			NOT = {
+				has_country_flag = recognize_the_csa
+				has_global_flag = alt_american_civil_war_has_happened
+				tag = CSA
+				tag = USA
+				tag = FSA
+			}
+		}
+		allow = { 
+			nationalism_n_imperialism = 1
+			OR = {
+				AND = {
+					NOT = {		
+						CSA = { national_provinces_occupied = 0.30 }
+					}
+					NOT = {
+						 relation = {
+							who = USA
+							value = 50
+						}
+					}
+				}
+				AND = {
+					has_global_flag = declaration2
+					NOT = { has_global_flag = right_to_secede }
+				}
+			}
+		}
+		effect = {
+			prestige = 1
+			set_country_flag = recognize_the_csa
+			CSA = { prestige = 5 }
+			USA = { prestige = -5 }
+			relation = {
+				who = CSA
+				value = 100
+			}
+			diplomatic_influence = {
+				who = CSA
+				value = 25
+			}
+			relation = {
+				who = USA
+				value = -100
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				alliance_with = USA
+			}
+			modifier = {
+				factor = 0
+				relation = { who = USA value = 100 }
+			}
+		}
+	}
+	
+	right_to_secede = {
+		picture = reform_csa
+		potential = {
+			exists = CSA
+			tag = USA
+			has_global_flag = american_civil_war_has_happened
+			NOT = {
+				has_global_flag = right_to_secede
+			}
+		}
+		allow = {
+			war = no
+			nationalism_n_imperialism = 1
+			OR = {
+				CSA = { military_score = THIS }
+				war_exhaustion = 60
+				is_greater_power = no
+			}
+		}
+		effect = {
+			prestige = -25
+			war_exhaustion = -10
+			set_global_flag = right_to_secede
+			CSA = {
+				prestige = 20
+				any_owned = {
+					limit = {
+						is_core = CSA
+						is_core = USA
+					}
+					remove_core = USA
+				}
+			}
+			relation = {
+				who = CSA
+				value = 200
+			}
+			any_country = {
+				limit = {
+					is_greater_power = yes
+					NOT = { tag = CSA }
+				}
+				relation = {
+					who = THIS
+					value = 50
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	second_declaration_of_independence = {
+		alert = yes
+		picture = reform_csa
+		potential = {
+			tag = CSA
+			has_global_flag = american_civil_war_has_happened
+			NOT = { has_global_flag = declaration2 }
+		}
+		allow = {
+			war = no
+			nationalism_n_imperialism = 1
+		}
+		effect = {
+			prestige = 30
+			set_global_flag = declaration2
+			any_pop = {
+				limit = {
+					has_pop_culture = dixie
+				}
+				militancy = -10
+			}
+			war_exhaustion = -10
+			any_country = {
+				limit = {
+					is_greater_power = yes
+					NOT = { tag = USA }
+				}
+				relation = {
+					who = THIS
+					value = 50
+				}
+			}
+			USA = { prestige = -30 remove_accepted_culture = dixie }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	recognize_the_fsa = {
+		picture = form_fsa
+		potential = {
+			is_greater_power = yes
+			exists = FSA
+			exists = USA
+			has_global_flag = alt_american_civil_war_has_happened
+			NOT = {
+				has_country_flag = recognize_the_fsa
+				tag = CSA
+				tag = USA
+				tag = FSA
+			}
+		}
+		allow = { 
+			nationalism_n_imperialism = 1
+			OR = {
+				AND = {
+					NOT = {		
+						FSA = { national_provinces_occupied = 0.30 }
+					}
+					NOT = {
+						 relation = {
+							who = USA
+							value = 50
+						}
+					}
+				}
+				AND = {
+					has_global_flag = declaration3
+					NOT = { has_global_flag = fsa_right_to_secede }
+				}
+			}
+		}
+		effect = {
+			prestige = 1
+			set_country_flag = recognize_the_fsa
+			FSA = { prestige = 5 }
+			USA = { prestige = -5 }
+			relation = {
+				who = FSA
+				value = 100
+			}
+			diplomatic_influence = {
+				who = FSA
+				value = 25
+			}
+			relation = {
+				who = USA
+				value = -100
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				alliance_with = USA
+			}
+			modifier = {
+				factor = 0
+				relation = { who = USA value = 100 }
+			}
+		}
+	}
+	
+	FSA_right_to_secede = {
+		picture = form_fsa
+		potential = {
+			exists = FSA
+			tag = USA
+			has_global_flag = alt_american_civil_war_has_happened
+			NOT = {
+				has_global_flag = fsa_right_to_secede
+			}
+		}
+		allow = {
+			war = no
+			nationalism_n_imperialism = 1
+			OR = {
+				FSA = { military_score = THIS }
+				war_exhaustion = 60
+				is_greater_power = no
+			}
+		}
+		effect = {
+			prestige = -25
+			war_exhaustion = -10
+			set_global_flag = fsa_right_to_secede
+			FSA = {
+				prestige = 20
+				any_owned = {
+					limit = {
+						is_core = FSA
+						is_core = USA
+					}
+					remove_core = USA
+				}
+			}
+			relation = {
+				who = FSA
+				value = 200
+			}
+			any_country = {
+				limit = {
+					is_greater_power = yes
+					NOT = { tag = FSA }
+				}
+				relation = {
+					who = THIS
+					value = 50
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	FSA_second_declaration_of_independence = {
+		alert = yes
+		picture = form_fsa
+		potential = {
+			tag = FSA
+			has_global_flag = alt_american_civil_war_has_happened
+			NOT = { has_global_flag = declaration3 }
+		}
+		allow = {
+			war = no
+			nationalism_n_imperialism = 1
+		}
+		effect = {
+			prestige = 30
+			set_global_flag = declaration3
+			any_pop = {
+				limit = {
+					has_pop_culture = yankee
+				}
+				militancy = -10
+			}
+			war_exhaustion = -10
+			any_country = {
+				limit = {
+					is_greater_power = yes
+					NOT = { tag = USA }
+				}
+				relation = {
+					who = THIS
+					value = 50
+				}
+			}
+			USA = { prestige = -30 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+			
 }
