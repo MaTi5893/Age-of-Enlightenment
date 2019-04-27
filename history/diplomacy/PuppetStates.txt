@@ -54,11 +54,11 @@ substate = {
 	end_date = 1763.1.1
 }
 
-#CAN / NZL / AST / MRU / NEW / RHO / JAM
+#FCA / NZL / AST / MRU / NEW / RHO / JAM
 substate = {
-	first = ENG
-	second = CAN
-	start_date = 1815.1.1
+	first = FRA
+	second = FCA
+	start_date = 1600.1.1
 	end_date = 1936.1.1
 }
 
@@ -352,7 +352,7 @@ substate = {
 substate = {
 	first = ENG
 	second = RPL
-	start_date = 1805.1.1
+	start_date = 1605.1.1
 	end_date = 1936.1.1
 }
 
