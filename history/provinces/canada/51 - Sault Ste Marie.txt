@@ -1,0 +1,6 @@
+owner = FCA
+controller = FCA
+add_core = FCA
+trade_goods = cattle
+life_rating = 30
+colonial = 2
