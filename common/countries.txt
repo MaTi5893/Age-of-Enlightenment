@@ -3,6 +3,51 @@
 # Special countries...
 REB 	= 	"countries/rebels.txt"
 
+### AGE OF ENLIGHTENMENT ###
+
+# Americas #
+CGC 	= "countries/Colonial Chile.txt"
+FLO   = "countries/Florida.txt"
+PBZ   = "countries/Portuegese Brazil.txt"
+THC   = "countries/Thirteen Colonies.txt"
+VLP		= "countries/Colonial La Plata.txt"
+VNG		= "countries/Colonial Colombia.txt"
+VNS		= "countries/Colonial Spain.txt"
+VOP		= "countries/Colonial Peru.txt"
+
+# East Asia #
+AHO		= "countries/Ahom.txt"
+BIH		= "countries/Bihar.txt" #
+BIJ		= "countries/Bijapur.txt" #
+BNG		= "countries/Bengal.txt" #
+GUJ		= "countries/Gujarat.txt" #
+MAW		= "countries/Malwa.txt" #
+MDR		= "countries/Madurai.txt"
+MNP		= "countries/Manipur.txt"
+MRU		= "countries/Mrauk U.txt"
+
+# Europe #
+ACH		= "countries/Achen.txt"
+ANS		= "countries/Ansbach.txt"
+ATB		= "countries/Saxe-Altenburg.txt"
+EFR		= "countries/East Frisia.txt"
+AUG		= "countries/Augsburg.txt"
+GBR   = "countries/Great Britain.txt"
+HRE   = "countries/Holy Roman Empire.txt"
+LIG		= "countries/Liege.txt"
+LNE		= "countries/Luneburg.txt"
+KOL		= "countries/Cologne.txt"
+MUN		= "countries/Munster.txt"
+PAL		= "countries/Palatinate.txt"
+RAV		= "countries/Ravensburg.txt"
+SAL		= "countries/Salzburg.txt"
+THU		= "countries/Thuringia.txt"
+TRR		= "countries/Trier.txt"
+ULM		= "countries/Ulm.txt"
+WUL		= "countries/Wulzburg.txt"
+
+
+
 ### NEW NATIONS MOD ###
 
 ###France Mod###
@@ -18,22 +63,6 @@ VIC 	="countries/Nationalist France.txt"
 BOR		="countries/The Kingdom of France.txt"
 
 ##HFM New Nations
-ACH		= "countries/Achen.txt"
-PAL		= "countries/Palatinate.txt"
-LNE		= "countries/Luneburg.txt"
-WUL		= "countries/Wulzburg.txt"
-AUG		= "countries/Augsburg.txt"
-RAV		= "countries/Ravensburg.txt"
-ANS		= "countries/Ansbach.txt"
-THU		= "countries/Thuringia.txt"
-EFR		= "countries/East Frisia.txt"
-SAL		= "countries/Salzburg.txt"
-KOL		= "countries/Cologne.txt"
-ULM		= "countries/Ulm.txt"
-TRR		= "countries/Trier.txt"
-MUN		= "countries/Munster.txt"
-LIG		= "countries/Liege.txt"
-ATB		= "countries/Saxe-Altenburg.txt"
 ADO		= "countries/Andorra.txt"
 MNC		= "countries/Monaco.txt"
 LIE		= "countries/Liechtenstein.txt"
@@ -95,12 +124,6 @@ AZH		="countries/Anazzah.txt"
 URM		="countries/Urmia.txt"
 HEH		="countries/Hesse-Homburg.txt"
 
-###Colonial Spain Countries
-CGC 		= "countries/Colonial Chile.txt"
-VNG		= "countries/Colonial Colombia.txt"
-VLP		= "countries/Colonial La Plata.txt"
-VOP		= "countries/Colonial Peru.txt"
-VNS		= "countries/Colonial Spain.txt"
 
 ##HPM
 ATC		="countries/Antillean Confederation.txt"
