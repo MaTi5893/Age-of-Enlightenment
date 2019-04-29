@@ -1,6 +1,5 @@
-capital = 1334
-primary_culture = assamese
-culture = bengali
+capital = 1345
+primary_culture = burmese
 religion = theravada
 government = absolute_monarchy
 plurality = 0.0
@@ -37,3 +36,13 @@ upper_house = {
 	socialist = 0
 	communist = 0
 }
+
+# Technologies
+
+# Inventions
+
+# Starting Consciousness
+consciousness = 0
+nonstate_consciousness = 0
+
+oob = "MRU_oob.txt"

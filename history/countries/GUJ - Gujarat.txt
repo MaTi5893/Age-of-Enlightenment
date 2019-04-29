@@ -1,17 +1,21 @@
-capital = 1247
-primary_culture = bihari
-religion = shiite
+capital = 1291
+primary_culture = panjabi
+culture = telegu
+culture = marathi
+culture = rajput
+culture = gujarati
+religion = sunni
 government = absolute_monarchy
 plurality = 0.0
 nationalvalue = nv_order
-literacy = 0.1
+literacy = 0.03
 
-ruling_party = MUG_conservative
+ruling_party = MUG_reactionary
 upper_house = {
 	fascist = 0
 	liberal = 0
-	conservative = 100
-	reactionary = 0
+	conservative = 0
+	reactionary = 100
 	anarcho_liberal = 0
 	socialist = 0
 	communist = 0
@@ -21,7 +25,7 @@ upper_house = {
 consciousness = 0
 nonstate_consciousness = 0
 
-oob = "BIH_oob.txt"
+oob = "GUJ_oob.txt"
 
 slavery = no_slavery
 upper_house_composition = appointed

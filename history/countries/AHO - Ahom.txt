@@ -1,6 +1,7 @@
-capital = 1247
-primary_culture = bihari
-religion = shiite
+capital = 1258
+primary_culture = assamese
+culture = bengali
+religion = hindu
 government = absolute_monarchy
 plurality = 0.0
 nationalvalue = nv_order
@@ -21,7 +22,7 @@ upper_house = {
 consciousness = 0
 nonstate_consciousness = 0
 
-oob = "BIH_oob.txt"
+oob = "AHO_oob.txt"
 
 slavery = no_slavery
 upper_house_composition = appointed

@@ -5,19 +5,17 @@ government = absolute_monarchy
 plurality = 0.0
 nationalvalue = nv_order
 literacy = 0.1
-non_state_culture_literacy = 0.01
 
-ruling_party = AWA_conservative
+ruling_party = MUG_conservative
 upper_house = {
 	fascist = 0
-	liberal = 11
-	conservative = 73
-	reactionary = 16
+	liberal = 0
+	conservative = 100
+	reactionary = 0
 	anarcho_liberal = 0
 	socialist = 0
 	communist = 0
 }
-
 
 # Starting Consciousness
 consciousness = 0
@@ -25,7 +23,7 @@ nonstate_consciousness = 0
 
 oob = "AWA_oob.txt"
 
-slavery = yes_slavery
+slavery = no_slavery
 upper_house_composition = appointed
 vote_franschise = none_voting
 public_meetings = no_meeting
@@ -41,15 +39,3 @@ health_care = no_health_care
 unemployment_subsidies = no_subsidies
 pensions = no_pensions 
 school_reforms = no_schools
-
-#New Reforms
-conscription = two_year_draft
-debt_law = serfdom
-penal_system = capital_punishment
-child_labor = child_labor_legal
-citizens_rights = culture_voting_only
-border_policy = open_borders
-centralization = unitary
-colonial_policy = no_colonies 
-
-set_country_flag = shiite_country
