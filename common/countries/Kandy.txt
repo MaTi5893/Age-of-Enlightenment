@@ -1,4 +1,4 @@
-color = { 89  141  140 }
+color = { 196  244  166 } # 250 191 58
 graphical_culture = IndianGC
 
 party = {
@@ -54,30 +54,32 @@ party = {
 	war_policy = pro_military
 }
 
+
 unit_names = {
 	dreadnought = {
-		Alia Aurangabad Devki Fatimah Godvari Gulbargah Jalsena "Kala Jahazi" Khan "Lal Jahazi" Nausena "Nav ka Yudh"
-		Niknaz "Nila Jahazi" Niloufa Sagar Salima Suhalia Shameena Yasmine
+		Amirtha Amman Arul Bhima Chellam Devi Durga Gayatri Iniya Krishna Lakshmi Madhu Meenakshi Nalini
+		Pallar Parvati Payaswani Pennar Ponni Radha Ratri Sarasvati Sita Tamarai
+		
 	}
 	ironclad = {
-		Alia Aurangabad Devki Fatimah Godvari Gulbargah Jalsena "Kala Jahazi" Khan "Lal Jahazi" Nausena "Nav ka Yudh"
-		Niknaz "Nila Jahazi" Niloufa Sagar Salima Suhalia Shameena Yasmine
+		Amirtha Amman Arul Bhima Chellam Devi Durga Gayatri Iniya Krishna Lakshmi Madhu Meenakshi Nalini
+		Pallar Parvati Payaswani Pennar Ponni Radha Ratri Sarasvati Sita Tamarai
 	}
 	manowar = {
-		Alia Aurangabad Devki Fatimah Godvari Gulbargah Jalsena "Kala Jahazi" Khan "Lal Jahazi" Nausena "Nav ka Yudh"
-		Niknaz "Nila Jahazi" Niloufa Sagar Salima Suhalia Shameena Yasmine
+		Amirtha Amman Arul Bhima Chellam Devi Durga Gayatri Iniya Krishna Lakshmi Madhu Meenakshi Nalini
+		Pallar Parvati Payaswani Pennar Ponni Radha Ratri Sarasvati Sita Tamarai
 	}
 	cruiser = {
-		Alia Aurangabad Devki Fatimah Godvari Gulbargah Jalsena "Kala Jahazi" Khan "Lal Jahazi" Nausena "Nav ka Yudh"
-		Niknaz "Nila Jahazi" Niloufa Sagar Salima Suhalia Shameena Yasmine
+		Amirtha Amman Arul Bhima Chellam Devi Durga Gayatri Iniya Krishna Lakshmi Madhu Meenakshi Nalini
+		Pallar Parvati Payaswani Pennar Ponni Radha Ratri Sarasvati Sita Tamarai
 	}
 	frigate = {
-		Alia Aurangabad Devki Fatimah Godvari Gulbargah Jalsena "Kala Jahazi" Khan "Lal Jahazi" Nausena "Nav ka Yudh"
-		Niknaz "Nila Jahazi" Niloufa Sagar Salima Suhalia Shameena Yasmine
+		Amirtha Amman Arul Bhima Chellam Devi Durga Gayatri Iniya Krishna Lakshmi Madhu Meenakshi Nalini
+		Pallar Parvati Payaswani Pennar Ponni Radha Ratri Sarasvati Sita Tamarai
 	}
 	monitor = {
-		Alia Aurangabad Devki Fatimah Godvari Gulbargah Jalsena "Kala Jahazi" Khan "Lal Jahazi" Nausena "Nav ka Yudh"
-		Niknaz "Nila Jahazi" Niloufa Sagar Salima Suhalia Shameena Yasmine
+		Amirtha Amman Arul Bhima Chellam Devi Durga Gayatri Iniya Krishna Lakshmi Madhu Meenakshi Nalini
+		Pallar Parvati Payaswani Pennar Ponni Radha Ratri Sarasvati Sita Tamarai
 	}
 	clipper_transport = {
 		
@@ -86,7 +88,7 @@ unit_names = {
 		
 	}
 	commerce_raider = {
-		Alia Aurangabad Devki Fatimah Godvari Gulbargah Jalsena "Kala Jahazi" Khan "Lal Jahazi" Nausena "Nav ka Yudh"
-		Niknaz "Nila Jahazi" Niloufa Sagar Salima Suhalia Shameena Yasmine
+		Amirtha Amman Arul Bhima Chellam Devi Durga Gayatri Iniya Krishna Lakshmi Madhu Meenakshi Nalini
+		Pallar Parvati Payaswani Pennar Ponni Radha Ratri Sarasvati Sita Tamarai
 	}
 }
