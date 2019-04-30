@@ -1,0 +1,4 @@
+add_core = ULA
+trade_goods = sulphur
+life_rating = 15
+terrain = montane_forest
