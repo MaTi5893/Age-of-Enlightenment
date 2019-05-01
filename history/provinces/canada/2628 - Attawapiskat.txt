@@ -1,5 +1,6 @@
-owner = UCA
-controller = UCA
+owner = VNG
+controller = VNG
+add_core = VNG
 add_core = UCA
 add_core = GUA
 add_core = LOS
