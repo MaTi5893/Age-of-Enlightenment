@@ -1,0 +1,7 @@
+owner = VNG
+controller = VNG
+add_core = VNG
+add_core = ECU
+trade_goods = grain
+life_rating = 35
+naval_base = 1

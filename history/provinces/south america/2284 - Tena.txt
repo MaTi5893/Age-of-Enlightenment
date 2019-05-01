@@ -1,0 +1,8 @@
+owner = VNG
+controller = VNG
+add_core = VNG
+add_core = PEU
+add_core = ECU
+trade_goods = timber
+terrain = montane_forest
+life_rating = 32
