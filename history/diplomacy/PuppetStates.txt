@@ -1,3 +1,64 @@
+#Spanish Colonies
+substate = {
+	first = SPA 
+	second = VNS
+	start_date = 1700.1.1
+	end_date = 2000.1.1
+}
+
+substate = {
+	first = SPA 
+	second = VLP
+	start_date = 1700.1.1
+	end_date = 2000.1.1
+}
+
+substate = {
+	first = SPA 
+	second = VNG
+	start_date = 1700.1.1
+	end_date = 2000.1.1
+}
+
+substate = {
+	first = SPA 
+	second = VOP 
+	start_date = 1700.1.1
+	end_date = 2000.1.1
+}
+
+substate = {
+	first = SPA 
+	second = FLO
+	start_date = 1700.1.1
+	end_date = 2000.1.1
+}
+
+#English North America
+
+substate = {
+	first = ENG
+	second = THC 
+	start_date = 1700.1.1
+	end_date = 2000.1.1
+}
+
+#Portugese Brazil
+substate = {
+	first = POR
+	second = PBZ  
+	start_date = 1700.1.1
+	end_date = 2000.1.1
+}
+
+#French Louisiana
+substate = {
+	first = FRA
+	second = ULA
+	start_date = 1700.1.1
+	end_date = 2000.1.1
+}
+
 #AOG
 substate = {
 	first = GER
