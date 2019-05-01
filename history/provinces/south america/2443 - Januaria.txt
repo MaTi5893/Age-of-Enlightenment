@@ -1,0 +1,7 @@
+owner = PBZ
+controller = PBZ
+add_core = PBZ
+add_core = BRZ
+trade_goods = fruit
+terrain = dryhills
+life_rating = 35

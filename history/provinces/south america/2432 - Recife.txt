@@ -1,0 +1,8 @@
+owner = PBZ
+controller = PBZ
+add_core = PBZ
+add_core = BRZ
+add_core = PNB
+trade_goods = coffee
+terrain = farmlands
+life_rating = 35
