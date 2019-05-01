@@ -1,0 +1,8 @@
+owner = VOP
+controller = VOP
+add_core = VOP
+add_core = CHL
+trade_goods = iron
+terrain = dryhills
+life_rating = 35
+1861.1.1 = { railroad = 1 }
